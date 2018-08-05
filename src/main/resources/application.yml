@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    druid:
+      username: root
+      password:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://:3306/resume?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      max-active: 5
+      initial-size: 1
+      keep-alive: true
