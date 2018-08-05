@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.freemarker.demo.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.web.freemarker.demo.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="stature" jdbcType="INTEGER" property="stature" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="college" jdbcType="VARCHAR" property="college" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="job_intention" jdbcType="VARCHAR" property="jobIntention" />
+    <result column="profile_photo" jdbcType="VARCHAR" property="profilePhoto" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, username, real_name, stature, nation, education, tel, birthday, email, college, 
+    address, job_intention, profile_photo, password, introduction
+  </sql>
+</mapper>
