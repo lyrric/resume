@@ -1,9 +1,17 @@
 package com.web.freemarker.demo.entity;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table(name = "credential")
 public class Credential {
     /**
      * 
      */
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
     /**
