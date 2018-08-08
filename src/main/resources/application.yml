@@ -2,9 +2,14 @@ spring:
   datasource:
     druid:
       username: root
-      password:
+      password: !!!
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://:3306/resume?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      url: jdbc:mysql://localhost:3306/resume?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       max-active: 5
       initial-size: 1
       keep-alive: true
+mybatis:
+  mapper-locations: classpath:mapper/**.xml
+logging:
+  level:
+   com.web.freemarker.demo.mapper: debug
