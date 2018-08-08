@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="experience" jdbcType="int" property="experience" />
+    <result column="experience" jdbcType="INTEGER" property="experience" />
   </resultMap>
 
 </mapper>

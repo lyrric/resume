@@ -10,9 +10,5 @@
     <result column="position" jdbcType="VARCHAR" property="position" />
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
-  <sql id="Base_Column_List">
-    id, user_id, start_date, end_date, company, position,description
-  </sql>
-  <sql id="Blob_Column_List">
 
 </mapper>

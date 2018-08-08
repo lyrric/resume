@@ -2,16 +2,23 @@ package com.web.freemarker.demo.mapper;
 
 import com.web.freemarker.demo.entity.Project;
 import com.web.freemarker.demo.entity.Skill;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import tk.mybatis.mapper.common.BaseMapper;
 
 import java.util.List;
 
+@Mapper
 public interface SkillMapper extends BaseMapper<Skill> {
 
     @Select("select * from skill where user_id = #{userId}")
     @ResultMap("BaseResultMap")
     List<Skill> listByUserId(@Param("userId") int userId);
+
+    @Update("update skill set name = #{name}," +
+            "experience = #{experience} " +
+            "where id = #{id} and user_id = #{userId}")
+    int update(Skill skill);
+
+    @Delete("delete from skill where id = #{id} and user_id = #{userId}")
+    int delete(@Param("id")Integer id, @Param("userId")Integer userId);
 }
