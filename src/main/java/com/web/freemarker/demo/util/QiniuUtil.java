@@ -16,15 +16,15 @@ import java.io.InputStream;
 
 //七牛云附件管理工具
 @Component
-public class QiniuStorageUtil {
+public class QiniuUtil {
 
-    @Value("${storage-util.qiniu.access-key}")
+    @Value("${qiniu.access-key}")
     private String accessKey;
-    @Value("${storage-util.qiniu.secret-key}")
+    @Value("${qiniu.secret-key}")
     private String secretKey;
-    @Value("${storage-util.qiniu.url}")
+    @Value("${qiniu.url}")
     private String url;
-    @Value("${storage-util.qiniu.bucket}")
+    @Value("${qiniu.bucket}")
     private String bucket;
 
     private  UploadManager uploadManager;//...上传组件
@@ -35,7 +35,7 @@ public class QiniuStorageUtil {
      *初始化
      */
 
-    public QiniuStorageUtil() throws Exception {
+    public QiniuUtil() throws Exception {
 
 
     }
