@@ -2,7 +2,7 @@ spring:
   datasource:
     druid:
       username: root
-      password: !!!
+      password:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/resume?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       max-active: 5
@@ -13,3 +13,9 @@ mybatis:
 logging:
   level:
    com.web.freemarker.demo.mapper: debug
+
+qiniu:
+  access-key:
+  secret-key:
+  url: p9lgah5rx.bkt.clouddn.com
+  bucket: demob
