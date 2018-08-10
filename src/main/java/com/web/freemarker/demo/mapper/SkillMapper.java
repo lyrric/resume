@@ -19,6 +19,6 @@ public interface SkillMapper extends BaseMapper<Skill> {
             "where id = #{id} and user_id = #{userId}")
     int update(Skill skill);
 
-    @Delete("delete from skill where id = #{id} and user_id = #{userId}")
-    int delete(@Param("id")Integer id, @Param("userId")Integer userId);
+    @Delete("deleteByIdAndUserId from skill where id = #{id} and user_id = #{userId}")
+    int deleteByIdAndUserId(@Param("id")Integer id, @Param("userId")Integer userId);
 }

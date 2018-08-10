@@ -2,7 +2,6 @@ package com.web.freemarker.demo.service.impl;
 
 import com.web.freemarker.demo.entity.Project;
 import com.web.freemarker.demo.mapper.ProjectMapper;
-import com.web.freemarker.demo.service.BaseService;
 import com.web.freemarker.demo.service.ProjectService;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +35,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void delete(int id, int userId) {
-        projectMapper.delete(id, userId);
+        projectMapper.deleteByIdAndUserId(id, userId);
     }
 
 

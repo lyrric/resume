@@ -2,7 +2,6 @@ package com.web.freemarker.demo.service.impl;
 
 import com.web.freemarker.demo.entity.Credential;
 import com.web.freemarker.demo.mapper.CredentialMapper;
-import com.web.freemarker.demo.service.BaseService;
 import com.web.freemarker.demo.service.CredentialService;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +35,7 @@ public class CredentialServiceImpl implements CredentialService {
 
     @Override
     public void delete(int id, int userId) {
-        credentialMapper.delete(id, userId);
+        credentialMapper.deleteByIdAndUserId(id, userId);
     }
 
 

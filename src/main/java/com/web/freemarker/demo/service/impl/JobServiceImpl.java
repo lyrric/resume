@@ -2,8 +2,6 @@ package com.web.freemarker.demo.service.impl;
 
 import com.web.freemarker.demo.entity.Job;
 import com.web.freemarker.demo.mapper.JobMapper;
-import com.web.freemarker.demo.service.BaseService;
-import com.web.freemarker.demo.service.EducationService;
 import com.web.freemarker.demo.service.JobService;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +34,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void delete(int id, int userId) {
-        jobMapper.delete(id, userId);
+        jobMapper.deleteByIdAndUserId(id, userId);
     }
 
 }

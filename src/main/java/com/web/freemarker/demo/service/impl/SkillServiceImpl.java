@@ -1,10 +1,7 @@
 package com.web.freemarker.demo.service.impl;
 
-import com.web.freemarker.demo.entity.Project;
 import com.web.freemarker.demo.entity.Skill;
 import com.web.freemarker.demo.mapper.SkillMapper;
-import com.web.freemarker.demo.service.BaseService;
-import com.web.freemarker.demo.service.ProjectService;
 import com.web.freemarker.demo.service.SkillService;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +36,7 @@ public class SkillServiceImpl implements SkillService {
 
     @Override
     public void delete(int id, int userId) {
-        skillMapper.delete(id, userId);
+        skillMapper.deleteByIdAndUserId(id, userId);
     }
 
 

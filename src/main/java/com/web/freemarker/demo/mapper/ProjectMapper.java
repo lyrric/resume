@@ -21,7 +21,7 @@ public interface ProjectMapper extends BaseMapper<Project> {
             "where id = #{id} and user_id = #{userId}")
     int update(Project project);
 
-    @Delete("delete from project where id = #{id} and user_id = #{userId}")
-    int delete(@Param("id")Integer id, @Param("userId")Integer userId);
+    @Delete("deleteByIdAndUserId from project where id = #{id} and user_id = #{userId}")
+    int deleteByIdAndUserId(@Param("id")Integer id, @Param("userId")Integer userId);
 
 }
