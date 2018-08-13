@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="initial-scale=1.0,width=device-width" />
+<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css" type="text/css" />
+</head>
+<style>
+	.form-group{
+		margin-top: 10px;
+	}
+	.wrapper{
+		padding: 15px;
+		max-width: 800px; 
+	}
+	.base-info{
+		background-color: #DFF0D8
+	}
+	.base-l{
+		width: 35%;
+		float: left;
+	}
+	.base-r{
+		width: 40%;
+		float: left;
+	}
+	.base-photo{
+		width: 25%;
+		float: right;
+	}
+	.profile-photo{
+		margin-top: 30px;
+		max-width: 120px;
+	}
+	.clear{
+		clear: both;
+	}
+	.common-buttom{
+		padding-left: 20px;
+		padding-top: 20px;
+	}
+	#upBtn{
+		margin-top: 10px;
+	}
+</style>
+<body>
+<div class="wrapper">
+	<!-- 基本信息-start -->
+	<div class="base-info">
+		<form class="form-inline">
+			<div class="base-l">
+				<div style="margin-left: 5px;">
+					<div class="form-group">
+						<label for="realName">姓 名：</label>
+						<input type="text" class="form-control" id="realName" placeholder="Jane Doe" th:value="${user.realName}">
+					</div>
+					<div class="form-group">
+						<label for="nation">民 族：</label>
+						<input type="text" class="form-control" id="nation" placeholder="汉族" th:value="${user.realName}">
+					</div>
+					<div class="form-group">
+						<label for="tel">电 话：</label>
+						<input type="text" class="form-control" id="tel" placeholder="186+" th:value="${user.realName}">
+					</div>
+					<div class="form-group">
+						<label for="email">邮 箱：</label>
+						<input type="text" class="form-control" id="email" placeholder="@163.com" th:value="${user.realName}">
+					</div>
+					<div class="form-group">
+						<label for="address">住 址：</label>
+						<input type="text" class="form-control" id="address" placeholder="四川成都" th:value="${user.realName}">
+					</div>
+				</div>
+			</div>
+			<div class="base-r">
+				<div style="margin-left: 5px;">
+					<div class="form-group">
+						<label for="stature">身 高：</label>
+						<input type="text" class="form-control" id="stature" placeholder="175" th:value="${user.stature}">
+					</div>
+					<div class="form-group">
+						<label for="education">学 历：</label>
+						<select id="education" class="form-control">
+							<option value="专科" th:selected="${user.education == '专科'}">专科</option>
+							<option value="本科" th:selected="${user.education == '本科'}">本科</option>
+							<option value="硕士" th:selected="${user.education == '硕士'}">硕士</option>
+							<option value="博士及以上" th:selected="${user.education == '博士及以上'}">博士及以上</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="jobIntention">求职意向：</label>
+						<input type="text" class="form-control" id="jobIntention" placeholder="Java工程师"  th:value="${user.realName}">
+					</div>
+					<div class="form-group">
+						<label for="college">毕业院校：</label>
+						<input type="text" class="form-control" id="college" placeholder="四川科技大学" th:value="${user.realName}">
+					</div>
+					<div class="form-group">
+						<label for="birthday">出身年月：</label>
+						<input type="text" class="form-control" id="birthday" placeholder="1994-03-21" th:value="${user.realName}">
+					</div>
+				</div>
+			</div>
+			<div class="base-photo">
+				<div style="margin-left: 5px;">
+					<img class="profile-photo" id="photo" src="user/images/default-profile-photo.jpg"  th:src="${user.realName}"/>
+					<input type="hidden" id="photo_value" th:value="${user.realName}"/>
+					<button class="btn btn-default" id="upBtn">选择照片</button>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="common-buttom" >
+				<button id="saveBtn" class="btn btn-success">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button id="cancelBtn" class="btn btn-info">取消</button>
+			</div>
+		</form>
+		<br />
+		
+	</div>
+	<div class="clear"></div>
+</body>
+<script src="js/jquery-3.3.1.min.js" type="application/javascript"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js" type="application/javascript"></script>
+<script src="js/upImage.js" type="application/javascript"></script>
+<script src="layer/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="application/javascript">
+	$('#upBtn').click(function(){
+		event.stopPropagation();
+		event.preventDefault();
+		upImage('/upload', function(responseData){
+			if(postComplete(responseData)){
+				uploadSuccess();
+			}
+			$('#photo_value').val(responseData.data)
+		},function(data){
+			uploadFaild();
+		},function(val){
+			
+		});
+	});
+	$('#cancelBtn').click(function(){
+		window.parent.closeIframe();
+	});
+	$('#saveBtn').click(function(){
+		$.ajax({
+			url:'/user',
+			dataType:'json',
+			type:'post',
+			data:{
+				realName:$('realName').val(),
+				stature:$('stature').val(),
+				nation:$('nation').val(),
+				education:$('education').val(),
+				tel:$('tel').val(),
+				birthday:$('birthday').val(),
+				email:$('email').val(),
+				college:$('college').val(),
+				address:$('address').val(),
+				jobIntention:$('jobIntention').val(),
+				profilePhoto:$('photo_value').val()
+			},
+			success:function(data){
+				if(postComplete(data)){
+					layer.msg('保存成功,即将关闭', {
+						time: 1000,
+						icon: 1,
+						end: function(){
+							parent.location.reload();
+						}
+					});
+				}
+			},
+			error:function(){
+				postFaild('保存失败');
+			}
+		});
+	});
+</script>
+
+</html>

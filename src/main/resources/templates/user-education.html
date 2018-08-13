@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="initial-scale=1.0,width=device-width" />
+<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css" type="text/css" />
+</head>
+<style>
+	.form-group{
+		margin-top: 10px;
+	}
+	.wrapper{
+		max-width: 500px;
+	}
+	.base-info{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.base-l{
+		width: 50%;
+		float: left;
+	}
+	.base-r{
+		width: 50%;
+		float: left;
+	}
+	.clear{
+		clear: both;
+	}
+	#upBtn{
+		margin-top: 10px;
+	}
+</style>
+<body>
+<div class="wrapper">
+	<!-- 基本信息-start -->
+	<div class="base-info">
+		<form>
+			<input type="hidden" id="id" value="" th:value="${education.id}"/>
+			<div class="form-group">
+					<label for="college">学校：</label>
+					<input type="text" class="form-control" id="college" placeholder="四川科技大学" th:value="${education?.college}">
+			</div>
+			<div class="base-l">
+				<div >
+					<div class="form-group">
+						<label for="specialty">专业：</label>
+						<input type="text" class="form-control" id="specialty" placeholder="软件工程" th:value="${education?.specialty}">
+					</div>
+					<div class="form-group">
+						<label for="type">类型：</label>
+						<select id="type" class="form-control">
+							<option value="专科" th:selected="${education?.type == '专科'}">专科</option>
+							<option value="本科" th:selected="${education?.type == '本科'}">本科</option>
+							<option value="硕士" th:selected="${education?.type == '硕士'}">硕士</option>
+							<option value="博士及以上" th:selected="${education?.type == '博士及以上'}">博士及以上</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="base-r">
+				<div>
+					<div class="form-group">
+						<label for="startDate">开始时间：</label>
+						<input type="date" class="form-control" id="startDate" placeholder="2014-9" th:value="${education?.startDate}">
+					</div>
+					<div class="form-group">
+						<label for="endDate">结束时间：</label>
+						<input type="date" class="form-control" id="endDate" placeholder="2018-7" th:value="${education?.endDate}">
+					</div>
+					
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="form-group">
+				<label for="courses">主修课程：</label>
+				<textarea class="form-control" rows="2"  id="courses" th:text="${education?.courses}"></textarea>
+			</div>
+			<div class="common-buttom" >
+				<button id="saveBtn" class="btn btn-success">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button id="cancelBtn" class="btn btn-info">取消</button>
+			</div>
+		</form>
+		<br />
+	</div>
+	<div class="clear"></div>
+</div>
+</body>
+<script src="js/jquery-3.3.1.min.js" type="application/javascript"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js" type="application/javascript"></script>
+<script src="js/upImage.js" type="application/javascript"></script>
+<script src="layer/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="application/javascript">
+	$('#saveBtn').click(function(){
+		event.stopPropagation();
+		event.preventDefault();
+		$.ajax({
+			url:'/education',
+			dataType:'json',
+			type:'post',
+			data:{
+				id:$('id').val(),
+				college:$('college').val(),
+				startDate:$('startDate').val(),
+				endDate:$('endDate').val(),
+				specialty:$('specialty').val(),
+				type:$('type').val(),
+				courses:$('courses').text()
+			},
+			success:function(data){
+				if(postComplete(data)){
+					if($('id').val() != ''){
+						layer.confirm('添加成功,是否继续添加?', {
+							btn: ['是','否'] //按钮
+							},function(){
+								window.location.reload();
+							},function(){
+								parent.location.reload();
+							}
+						);
+					}else{
+						layer.msg('保存成功,即将关闭', {
+							time: 1000,
+							icon: 1,
+							end: function(){
+								parent.location.reload();
+							}
+						});
+					}
+					
+				}
+			},
+			error:function(){
+				postFaild('保存失败');
+			}
+		});
+	});
+	$('#cancelBtn').click(function(){
+		window.parent.closeIframe();
+	});
+</script>
+
+</html>

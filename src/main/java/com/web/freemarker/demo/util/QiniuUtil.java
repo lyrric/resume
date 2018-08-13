@@ -14,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.PostConstruct;
 import java.io.InputStream;
 
-//七牛云附件管理工具
+/**
+ * 七牛云附件管理工具
+ */
 @Component
 public class QiniuUtil {
 

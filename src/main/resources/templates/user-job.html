@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="initial-scale=1.0,width=device-width" />
+<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css" type="text/css" />
+</head>
+<style>
+	.form-group{
+		margin-top: 10px;
+	}
+	.wrapper{
+		max-width: 400px; 
+	}
+	.base-info{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.base-l{
+		width: 50%;
+		float: left;
+	}
+	.base-r{
+		width: 50%;
+		float: left;
+	}
+	.clear{
+		clear: both;
+	}
+</style>
+<body>
+<div class="wrapper">
+	<!-- 基本信息-start -->
+	<div class="base-info">
+		<form>
+			<input type="hidden" id="id" value="" th:value="${job?.id}"/>
+			<div class="form-group">
+				<label for="company">公司：</label>
+				<input type="text" class="form-control" id="company" placeholder="XXXX科技有限公司" th:value="${job?.company}">
+			</div>
+			<div class="form-group">
+				<label for="position">职位：</label>
+				<input type="text" class="form-control" id="position" placeholder="JAVA工程师" th:value="${job?.company}">
+			</div>
+			<div class="base-r">
+				<div>
+					<div class="form-group">
+						<label for="startDate">开始时间：</label>
+						<input type="date" class="form-control" id="startDate" placeholder="2014-9" th:value="${job?.company}">
+					</div>
+				</div>
+			</div>
+			<div class="base-r">
+				<div >
+					<div class="form-group">
+						<label for="endDate">结束时间：</label>
+						<input type="date" class="form-control" id="endDate" placeholder="2018-7" th:value="${job?.company}">
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="form-group">
+				<label for="description">描述：</label>
+				<textarea class="form-control" rows="2" id="description" th:text="${job?.desription}"></textarea>
+			</div>
+			<div class="common-buttom" >
+				<button id="saveBtn" class="btn btn-success">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button id="cancelBtn" class="btn btn-info">取消</button>
+			</div>
+		</form>
+		<br />
+		
+	</div>
+	<div class="clear"></div>
+</body>
+<script src="js/jquery-3.3.1.min.js" type="application/javascript"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js" type="application/javascript"></script>
+<script src="js/upImage.js" type="application/javascript"></script>
+<script src="layer/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="application/javascript">
+	$('#saveBtn').click(function(){
+		event.stopPropagation();
+		event.preventDefault();
+		$.ajax({
+			url:'/job',
+			dataType:'json',
+			type:'post',
+			data:{
+				id:$('id').val(),
+				startDate:$('startDate').val(),
+				endDate:$('endDate').val(),
+				company:$('company').val(),
+				position:$('position').val(),
+				description:$('description').text()
+			},
+			success:function(data){
+				if(postComplete(data)){
+					if($('id').val() == ''){
+						layer.confirm('添加成功,是否继续添加?', {
+							btn: ['是','否'] //按钮
+							},function(){
+								window.location.reload();
+							},function(){
+								parent.location.reload();
+							}
+						);
+					}else{
+						layer.msg('保存成功,即将关闭', {
+							time: 1000,
+							icon: 1,
+							end: function(){
+								parent.location.reload();
+							}
+						});
+					}
+					
+				}
+			},
+			error:function(){
+				postFaild('保存失败');
+			}
+		});
+	});
+	$('#cancelBtn').click(function(){
+		window.parent.closeIframe();
+	});
+</script>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>介绍</title>
+<meta name="viewport" content="initial-scale=1.0,width=device-width" />
+<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css" type="text/css" />
+</head>
+<style>
+	.form-group{
+		margin-top: 10px;
+	}
+	.clear{
+		clear: both;
+	}
+	.base-info{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#introduction{
+		width: 600px;
+		height: 200px;
+	}
+	.wrapper{
+		padding-left: 20px;
+	}
+</style>
+<body>
+<div class="wrapper">
+	<!-- 基本信息-start -->
+	<div>
+		<form>
+			<div class="form-group">
+				<label for="introduction">自我介绍：</label>
+				<textarea id="introduction" class="form-control" th:text="${user.introduction}"></textarea>
+			 </div>
+			<div class="common-buttom" >
+				<button id="saveBtn" class="btn btn-success">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button id="cancelBtn" class="btn btn-info">取消</button>
+			</div>
+		</form>
+		<br />
+		
+	</div>
+	<div class="clear"></div>
+</body>
+<script src="js/jquery-3.3.1.min.js" type="application/javascript"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js" type="application/javascript"></script>
+<script src="js/upImage.js" type="application/javascript"></script>
+<script src="layer/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="application/javascript">
+	$('#saveBtn').click(function(){
+		event.stopPropagation();
+		event.preventDefault();
+		$.ajax({
+			url:'/user',
+			dataType:'json',
+			type:'post',
+			data:{
+				introduction:$('introduction').text()
+			},
+			success:function(data){
+				if(postComplete(data)){
+					layer.msg('保存成功,即将关闭', {
+						time: 1000,
+						icon: 1,
+						end: function(){
+							parent.location.reload();
+						}
+					});
+				}
+			},
+			error:function(){
+				postFaild('保存失败');
+			}
+		});
+	});
+	$('#cancelBtn').click(function(){
+		window.parent.closeIframe();
+	});
+</script>
+
+</html>
