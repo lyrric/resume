@@ -2,20 +2,26 @@ spring:
   datasource:
     druid:
       username: root
-      password:
+      password: xxx1aAxxx!!!
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/resume?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      url: jdbc:mysql://47.97.215.50:3306/resume?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       max-active: 5
       initial-size: 1
       keep-alive: true
+  thymeleaf:
+    suffix: .html
+    mode: LEGACYHTML5
+    enabled: true
+    cache: false
+    check-template-location: true
 mybatis:
   mapper-locations: classpath:mapper/**.xml
 logging:
   level:
-   com.web.freemarker.demo.mapper: debug
-
+   #com.web.freemarker.demo.mapper: debug
+   com.web.freemarker.demo.*: debug
 qiniu:
-  access-key:
-  secret-key:
+  access-key: G4alrnFE4uN3Q9CKhdksdmX7NRBkwIp30zEzdVFZ
+  secret-key: xtWK0dv2aNCo4u1YMT9_lX9LKImmtM8SJhu5ZxHo
   url: p9lgah5rx.bkt.clouddn.com
-  bucket: demob
+  bucket: demo

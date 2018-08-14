@@ -57,10 +57,10 @@
 			dataType:'json',
 			type:'post',
 			data:{
-				introduction:$('introduction').text()
+				introduction:$('#introduction').text()
 			},
 			success:function(data){
-				if(postComplete(data)){
+				if(ajaxComplete(data)){
 					layer.msg('保存成功,即将关闭', {
 						time: 1000,
 						icon: 1,
@@ -71,7 +71,7 @@
 				}
 			},
 			error:function(){
-				postFaild('保存失败');
+				ajaxFaild('保存失败');
 			}
 		});
 	});

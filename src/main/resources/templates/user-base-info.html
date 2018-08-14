@@ -109,11 +109,11 @@
 				</div>
 			</div>
 			<div class="clear"></div>
-			<div class="common-buttom" >
-				<button id="saveBtn" class="btn btn-success">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
-				<button id="cancelBtn" class="btn btn-info">取消</button>
-			</div>
 		</form>
+		<div class="common-buttom" >
+			<button id="saveBtn" class="btn btn-success">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
+			<button id="cancelBtn" class="btn btn-info">取消</button>
+		</div>
 		<br />
 		
 	</div>
@@ -129,7 +129,7 @@
 		event.stopPropagation();
 		event.preventDefault();
 		upImage('/upload', function(responseData){
-			if(postComplete(responseData)){
+			if(ajaxComplete(responseData)){
 				uploadSuccess();
 			}
 			$('#photo_value').val(responseData.data)
@@ -143,25 +143,27 @@
 		window.parent.closeIframe();
 	});
 	$('#saveBtn').click(function(){
+        event.stopPropagation();
+        event.preventDefault();
 		$.ajax({
 			url:'/user',
 			dataType:'json',
 			type:'post',
 			data:{
-				realName:$('realName').val(),
-				stature:$('stature').val(),
-				nation:$('nation').val(),
-				education:$('education').val(),
-				tel:$('tel').val(),
-				birthday:$('birthday').val(),
-				email:$('email').val(),
-				college:$('college').val(),
-				address:$('address').val(),
-				jobIntention:$('jobIntention').val(),
-				profilePhoto:$('photo_value').val()
+				realName:$('#realName').val(),
+				stature:$('#stature').val(),
+				nation:$('#nation').val(),
+				education:$('#education').val(),
+				tel:$('#tel').val(),
+				birthday:$('#birthday').val(),
+				email:$('#email').val(),
+				college:$('#college').val(),
+				address:$('#address').val(),
+				jobIntention:$('#jobIntention').val(),
+				profilePhoto:$('#photo_value').val()
 			},
 			success:function(data){
-				if(postComplete(data)){
+				if(ajaxComplete(data)){
 					layer.msg('保存成功,即将关闭', {
 						time: 1000,
 						icon: 1,
@@ -172,7 +174,7 @@
 				}
 			},
 			error:function(){
-				postFaild('保存失败');
+                ajaxFaild('保存失败');
 			}
 		});
 	});

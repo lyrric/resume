@@ -1,7 +1,9 @@
 package com.web.freemarker.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -53,6 +55,7 @@ public class User {
     /**
      * 生日
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate birthday;
 
     /**

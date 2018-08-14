@@ -96,16 +96,16 @@
 			dataType:'json',
 			type:'post',
 			data:{
-				id:$('id').val(),
-				college:$('college').val(),
-				startDate:$('startDate').val(),
-				endDate:$('endDate').val(),
-				specialty:$('specialty').val(),
-				type:$('type').val(),
-				courses:$('courses').text()
+				id:$('#id').val(),
+				college:$('#college').val(),
+				startDate:$('#startDate').val(),
+				endDate:$('#endDate').val(),
+				specialty:$('#specialty').val(),
+				type:$('#type').val(),
+				courses:$('#courses').text()
 			},
 			success:function(data){
-				if(postComplete(data)){
+				if(ajaxComplete(data)){
 					if($('id').val() !== ''){
 						layer.confirm('添加成功,是否继续添加?', {
 							btn: ['是','否'] //按钮
@@ -128,7 +128,7 @@
 				}
 			},
 			error:function(){
-				postFaild('保存失败');
+                ajaxFaild('保存失败');
 			}
 		});
 	});

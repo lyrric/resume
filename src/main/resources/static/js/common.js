@@ -36,6 +36,6 @@ function ajaxComplete(data){
 	if(responseData.success){
 		return true;
 	}
-	postFaild(data.errMsg);
+    ajaxFaild(data.errMsg);
 	return false;
 }
