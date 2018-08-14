@@ -4,9 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>个人中心-我的简历</title>
 <meta name="viewport" content="initial-scale=1.0,width=device-width" />
-<link rel="stylesheet" href="user/css/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="user/css/prettyPhoto.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="user/css/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="../user/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../user/css/prettyPhoto.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../user/css/print.css" type="text/css" media="print" />
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 			<h2 id="titleName" class="sectionHead">基本信息</h2>
 		</div>
 		<div style="float: right;margin-top: 18px;">
-			<a href="javascript:;" data-width="800px" data-height="370px" data-url="user-base-info.html"
+			<a href="javascript:;" data-width="800px" data-height="370px" data-url="/user/base-info"
 				data-title="修改基本信息" onclick="showPage(this)">编辑</a>
 		</div>
 	</div>
@@ -83,7 +83,7 @@
 				</p>
 			</div>
 			<div class="base-photo">
-				<img class="profile-photo" id="l_photo" src="/user/images/default-profile-photo.jpg" th:src="${user.profilePhoto}"/>
+				<img class="profile-photo" id="l_photo" src="../user/images/default-profile-photo.jpg" th:src="${user.profilePhoto}"/>
 			</div>
 	</div>
 	
@@ -95,7 +95,7 @@
 			<h2 id="eye" class="sectionHead">自我介绍</h2>
 		</div>
 		<div style="float: right;margin-top: 50px;">
-			<a href="javascript:;" data-url="user-introduction.html" data-width="650px" data-height="360px" 
+			<a href="javascript:;" data-url="/user/introduction" data-width="650px" data-height="360px"
 			data-title="修改自我介绍" onclick="showPage(this)">编辑</a>
 		</div>
 	</div>
@@ -114,7 +114,7 @@
 			<h2 id="learn" class="sectionHead">教育经历</h2>
 		</div>
 		<div style="float: right;margin-top: 50px;">
-			<a href="javascript:;" data-url="user-education.html" data-width="400px" data-height="460px" 
+			<a href="javascript:;" data-url="/user/education/0" data-width="400px" data-height="460px"
 			data-title="新增教育经历" onclick="showPage(this)">新增</a>
 		</div>
 	</div>
@@ -123,16 +123,16 @@
 		<li th:each="education, state:${educations}">
 			<div class="details">
 				<h3 th:text="${education.college}">四川科技大学</h3>
-				<h4 th:text="${#dates.format(education.startDate, 'yyyy-MM') + ' - ' + #dates.format(education.startDate, 'yyyy-MM')}">2005.9 - 2007.7</h4>
+				<h4 th:text="${#temporals.format(education.startDate, 'yyyy.MM') + ' - ' + #temporals.format(education.startDate, 'yyyy-MM')}">2005.9 - 2007.7</h4>
 				<h5 th:text="|${education.specialty}(${education.type})|">软件工程（本科）</h5>
 			</div>
-			<div class="edu-div" th:data="div-id=${state.index}">
+			<div class="edu-div" th:data-div-id="${state.index}">
 				<p class="edu-content" th:text="${education.courses}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut justo nibh, mattis sit amet consequat a, varius vitae metus. Proin pharetra sodales pellentesque.</p>
 				<p class="edu-button">
 					<button class="edit-button" data-width="400px" data-height="460px"
-							th:data="id=${education.id}"  data-url="/education"
+							th:data-id="${education.id}" th:data-url="|/education/${education.id}|"
 							data-title="编辑教育经历" onclick="showPage(this)">编辑</button>
-					<button onclick="del(this)" th:data="id=${education.id}"  data-url="/education" class="del-button">删除</button>
+					<button onclick="del(this)" th:data="|id=${education.id}|"  data-url="/education" class="del-button">删除</button>
 				</p>
 			</div>
 		</li>
@@ -154,15 +154,15 @@
 		<li th:each="job, state:${jobs}">
 			<div class="details">
 				<h3 th:text="${job.company}">XXX科技有限公司</h3>
-				<h4 th:text="${#dates.format(job.startDate, 'yyyy-MM') + ' - ' + #dates.format(job.startDate, 'yyyy-MM')}">2005.9 - 2007.7</h4>
-				<h5 th:text="${job.posidtion}">JAVA工程师</h5>
+				<h4 th:text="${#temporals.format(job.startDate, 'yyyy-MM') + ' - ' + #temporals.format(job.startDate, 'yyyy-MM')}">2005.9 - 2007.7</h4>
+				<h5 th:text="${job.position}">JAVA工程师</h5>
 			</div>
-			<div class="job-div" th:data="div-id=${state.index}">
+			<div class="job-div" th:data-div-id="${state.index}">
 				<p class="job-content" th:text="${job.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut justo nibh, mattis sit amet consequat a, varius vitae metus. Proin pharetra sodales pellentesque.</p>
 				<p class="job-button">
-					<button onclick="showPage(this)" class="edit-button" th:data="id=${job.id}" data-url="/job"
+					<button onclick="showPage(this)" class="edit-button" th:data-id="${job.id}" th:data-url="|/job/${job.id}|"
 					data-width="400px" data-height="450px" data-title="编辑工作经验">编辑</button>
-					<button onclick="del(this)" th:data="id=${job.id}"   data-url="/job" class="del-button">删除</button>
+					<button onclick="del(this)" th:data-id="${job.id}"   data-url="/job" class="del-button">删除</button>
 				</p>
 			</div>
 		</li>
@@ -184,14 +184,14 @@
 		<li th:each="project, state:${projects}">
 			<div class="details">
 				<h3 th:text="${project.name}">XXX项目</h3>
-				<h4 th:text="${#dates.format(project.startDate, 'yyyy-MM') + ' - ' + #dates.format(project.startDate, 'yyyy-MM')}">2005.9 - 2007.7</h4>
+				<h4 th:text="${#temporals.format(project.startDate, 'yyyy-MM') + ' - ' + #temporals.format(project.startDate, 'yyyy-MM')}">2005.9 - 2007.7</h4>
 			</div>
-			<div class="project-div" th:data="div-id=${state.index}">
+			<div class="project-div" th:data-div-id="${state.index}">
 				<p class="project-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut justo nibh, mattis sit amet consequat a, varius vitae metus. Proin pharetra sodales pellentesque.</p>
 				<p class="project-button">
-					<button onclick="showPage(this)" th:data="id=${project.id}" class="edit-button" url="/project"
+					<button onclick="showPage(this)" th:data-id="${project.id}" class="edit-button" th:data-url="|/project/${project.id}|"
 					ddata-width="420px" data-height="380px"  data-title="编辑项目经验">编辑</button>
-					<button th:data="id=${project.id}" data-url="/project" onclick="del(1)" class="del-button">删除</button>
+					<button th:data-id="${project.id}" data-url="/project" onclick="del(1)" class="del-button">删除</button>
 				</p>
 			</div>
 		</li>
@@ -212,11 +212,11 @@
 	<div class="clear"></div>
 	<ul id="credential-list" class="honorsAwards">
 		<li th:each="credential, state:${credentials}">
-			<div class="credential-div" th:data="div-id=${credential.id}">
-				<p class="credential-content" th:text="${credential.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			<div class="credential-div" th:data-div-id="${state.index}">
+				<label class="credential-content" th:text="${credential.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
 				<div class="credential-button">
-					<label th:text="${credential.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
-					<a href="javascript:;" onclick="del(this)" class="action-a" th:data="id=${project.id}" data-url="/credential">删除</a>
+					<label class="credential-content"  th:text="${credential.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+					<a href="javascript:;" onclick="del(this)" class="action-a" th:data-id="${credential.id}" data-url="/credential">删除</a>
 				</div>
 			</div>
 		</li>
@@ -235,13 +235,15 @@
 	</div>
 	<div class="clear"></div>
 	<ul id="skills">
-		<div class="skill-div" data-div-id="0" th:each="skill,state:${skills}">
-			<li class="skill-title s80" th:class="'skill-title s'+${skill.experiece}+'0'"><span th:text="${skill.name}">WordPress Development</span></li>
+		<div class="skill-div" th:each="skill,state:${skills}" th:data-div-id="${state.index}">
+			<li class="skill-title s80" th:class="|skill-title s${skill.experience}0|"><span th:text="${skill.name}">WordPress Development</span></li>
 			<div class="skill-del-btn">
-				<li class="s80" style="float: left;"><span th:text="${skill.name}">WordPress Development</span></li>
-				<a href="javascript:;" onclick="showPage(this)" class="action-a" data-url="/skill"
+				<li class="skill-title s80"  style="float: left;" th:class="|skill-title s${skill.experience}0|">
+					<span th:text="${skill.name}">WordPress Development</span>
+				</li>
+				<a href="javascript:;" onclick="showPage(this)" class="action-a" th:data-url="|/skill/${skill.id}|"
 					data-width="400px" data-height="210px" data-title="编辑技能">编辑</a>
-				<a href="javascript:;" onclick="del(this)" class="action-a" th:data="id=${skill.id}"
+				<a href="javascript:;" onclick="del(this)" class="action-a" th:data-id="${skill.id}"
 				   data-url="/skill" >删除</a>
 				<div class="clear"></div>
 			</div>
@@ -253,11 +255,11 @@
 
 <div id="copyright">&copy; 2012 - Designed and developed by THE MOLITOR. More Templates 
 </div>
-<script src="user/js/jquery.js"></script>
-<script src="user/js/prettyPhoto.js"></script>
-<script src="user/js/backPosition.js"></script>
-<script src="user/js/custom.js"></script>
-<script src="layer/layer.js"></script>
-<script src="user/js/data.js"></script>
+<script src="../user/js/jquery.js"></script>
+<script src="../user/js/prettyPhoto.js"></script>
+<script src="../user/js/backPosition.js"></script>
+<script src="../user/js/custom.js"></script>
+<script src="../layer/layer.js"></script>
+<script src="../user/js/data.js"></script>
 </body>
 </html>

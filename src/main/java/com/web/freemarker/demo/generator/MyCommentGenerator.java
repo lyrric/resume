@@ -220,9 +220,9 @@ public class MyCommentGenerator implements CommentGenerator{
 
     /**
      * Adds a comment for a model class.  The Java code merger should
-     * be notified not to delete the entire class in case any manual
+     * be notified not to deleteByIdAndUserId the entire class in case any manual
      * changes have been made.  So this method will always use the
-     * "do not delete" annotation.
+     * "do not deleteByIdAndUserId" annotation.
      *
      * <p>Because of difficulties with the Java file merger, the default implementation
      * of this method should NOT add comments.  Comments should only be added if

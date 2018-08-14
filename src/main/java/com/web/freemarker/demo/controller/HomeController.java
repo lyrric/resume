@@ -5,7 +5,11 @@ import com.web.freemarker.demo.util.FileUtil;
 import com.web.freemarker.demo.util.JsonResult;
 import com.web.freemarker.demo.util.JsonResultUtil;
 import com.web.freemarker.demo.util.QiniuUtil;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +20,7 @@ public class HomeController {
 
     @Resource
     private QiniuUtil qiniuUtil;
+
 
     /**
      * 文件上传
