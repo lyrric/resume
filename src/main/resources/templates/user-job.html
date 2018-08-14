@@ -36,7 +36,7 @@
 			</div>
 			<div class="form-group">
 				<label for="position">职位：</label>
-				<input type="text" class="form-control" id="position" placeholder="JAVA工程师" th:value="${job?.company}">
+				<input type="text" class="form-control" id="position" placeholder="JAVA工程师" th:value="${job?.position}">
 			</div>
 			<div class="base-r">
 				<div>
@@ -87,11 +87,11 @@
 				endDate:$('#endDate').val(),
 				company:$('#company').val(),
 				position:$('#position').val(),
-				description:$('#description').text()
+				description:$('#description').val()
 			},
 			success:function(data){
 				if(ajaxComplete(data)){
-					if($('id').val() === ''){
+					if($('#id').val() === ''){
 						layer.confirm('添加成功,是否继续添加?', {
 							btn: ['是','否'] //按钮
 							},function(){

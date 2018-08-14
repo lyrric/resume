@@ -2,9 +2,9 @@ spring:
   datasource:
     druid:
       username: root
-      password: xxx1aAxxx!!!
+      password:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://47.97.215.50:3306/resume?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      url: jdbc:mysql://localhost:3306/resume?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       max-active: 5
       initial-size: 1
       keep-alive: true
@@ -21,7 +21,7 @@ logging:
    #com.web.freemarker.demo.mapper: debug
    com.web.freemarker.demo.*: debug
 qiniu:
-  access-key: G4alrnFE4uN3Q9CKhdksdmX7NRBkwIp30zEzdVFZ
-  secret-key: xtWK0dv2aNCo4u1YMT9_lX9LKImmtM8SJhu5ZxHo
-  url: p9lgah5rx.bkt.clouddn.com
+  access-key:
+  secret-key:
+  url:
   bucket: demo

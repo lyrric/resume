@@ -82,11 +82,11 @@
 				startDate:$('#startDate').val(),
 				endDate:$('#endDate').val(),
 				name:$('#name').val(),
-				description:$('#description').text()
+				description:$('#description').val()
 			},
 			success:function(data){
 				if(ajaxComplete(data)){
-					if($('id').val() === ''){
+					if($('#id').val() === ''){
 						layer.confirm('添加成功,是否继续添加?', {
 							btn: ['是','否'] //按钮
 							},function(){

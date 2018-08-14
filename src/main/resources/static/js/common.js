@@ -33,7 +33,7 @@ function ajaxFaild(errMsg){
 	});
 }
 function ajaxComplete(data){
-	if(responseData.success){
+	if(data.success){
 		return true;
 	}
     ajaxFaild(data.errMsg);

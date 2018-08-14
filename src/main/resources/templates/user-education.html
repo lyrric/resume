@@ -102,11 +102,11 @@
 				endDate:$('#endDate').val(),
 				specialty:$('#specialty').val(),
 				type:$('#type').val(),
-				courses:$('#courses').text()
+				courses:$('#courses').val()
 			},
 			success:function(data){
 				if(ajaxComplete(data)){
-					if($('id').val() !== ''){
+					if($('#id').val() === ''){
 						layer.confirm('添加成功,是否继续添加?', {
 							btn: ['是','否'] //按钮
 							},function(){

@@ -429,6 +429,7 @@ body.respond #messageSent {margin-top: 20px;}
 	display: none;
 }
 .credential-button{
+	float: right;
 	display: none;
 }
 #credential{

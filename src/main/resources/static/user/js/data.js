@@ -34,22 +34,22 @@
 	$('.credential-div').mouseover(function(){
 		let id = $(this).data('div-id');
 		$($('.credential-button')[id]).show();
-		$($('.credential-content')[id]).hide();
+		//$($('.credential-content')[id]).hide();
 	});
 	$('.credential-div').mouseout(function(){
 		let id = $(this).data('div-id');
 		$($('.credential-button')[id]).hide();
-		$($('.credential-content')[id]).show();
+		//$($('.credential-content')[id]).show();
 	});
 	$('.skill-div').mouseover(function(){
 		let id = $(this).data('div-id');
 		$($('.skill-del-btn')[id]).show();
-		$($('.skill-title')[id]).hide();
+		//$($('.skill-title')[id]).hide();
 	});
 	$('.skill-div').mouseout(function(){
 		let id = $(this).data('div-id');
 		$($('.skill-del-btn')[id]).hide();
-		$($('.skill-title')[id]).show();
+		//$($('.skill-title')[id]).show();
 	});
 
 var iframeIndex=0;
@@ -83,7 +83,7 @@ function del(obj){
 			dataType:'json',
 			type:'delete',
 			success:function(data){
-				if(postComplete(data)){
+				if(ajaxComplete(data)){
 					layer.msg('删除成功', {
 						time: 1000,
 						icon: 1,
@@ -94,7 +94,7 @@ function del(obj){
 				}
 			},
 			error:function(){
-				postFaild('删除失败');
+				ajaxFaild('删除失败');
 			}
 		});
 	}, function(){

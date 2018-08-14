@@ -27,7 +27,7 @@ public interface EducationMapper extends BaseMapper<Education> {
             "where id = #{id} and user_id = #{userId}")
     int update(Education education);
 
-    @Delete("deleteByIdAndUserId from education where id = #{id} and user_id = #{userId}")
+    @Delete("delete from education where id = #{id} and user_id = #{userId}")
     int deleteByIdAndUserId(@Param("id")Integer id, @Param("userId")Integer userId);
 
 }

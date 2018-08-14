@@ -26,7 +26,7 @@ public interface JobMapper extends BaseMapper<Job> {
             "where id = #{id} and user_id = #{userId}")
     int update(Job job);
 
-    @Delete("deleteByIdAndUserId from job where id = #{id} and user_id = #{userId}")
+    @Delete("delete from job where id = #{id} and user_id = #{userId}")
     int deleteByIdAndUserId(@Param("id")Integer id, @Param("userId")Integer userId);
 
 }
