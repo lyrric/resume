@@ -11,4 +11,6 @@ public interface JobService {
     void update(Job job);
 
     void delete(int id, int userId);
+
+    Job findByIdAndUserId(int id, int userId);
 }

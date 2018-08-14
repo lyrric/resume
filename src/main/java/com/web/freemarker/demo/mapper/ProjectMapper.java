@@ -14,6 +14,10 @@ public interface ProjectMapper extends BaseMapper<Project> {
     @ResultMap("BaseResultMap")
     List<Project> listByUserId(@Param("userId") int userId);
 
+    @Select("select * from project where user_id = #{userId} and id = #{id}")
+    @ResultMap("BaseResultMap")
+    Project findByIdAndUserId(@Param("id")int id, @Param("userId") int userId);
+
     @Update("update project set name = #{name}," +
             "startDate = #{startDate}," +
             "endDate = #{endDate}," +

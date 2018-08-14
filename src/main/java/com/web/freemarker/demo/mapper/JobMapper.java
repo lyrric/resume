@@ -14,6 +14,10 @@ public interface JobMapper extends BaseMapper<Job> {
     @ResultMap("BaseResultMap")
     List<Job> listByUserId(@Param("userId") int userId);
 
+    @Select("select * from job where user_id = #{userId} and id = #{id}")
+    @ResultMap("BaseResultMap")
+    Job findByIdAndUserId(@Param("id")int id, @Param("userId") int userId);
+
     @Update("update job set company = #{company}," +
             "startDate = #{startDate}," +
             "endDate = #{endDate}," +

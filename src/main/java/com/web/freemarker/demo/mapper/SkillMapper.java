@@ -14,6 +14,10 @@ public interface SkillMapper extends BaseMapper<Skill> {
     @ResultMap("BaseResultMap")
     List<Skill> listByUserId(@Param("userId") int userId);
 
+    @Select("select * from skill where user_id = #{userId} and id = #{id}")
+    @ResultMap("BaseResultMap")
+    Skill findByIdAndUserId(@Param("id")int id, @Param("userId") int userId);
+
     @Update("update skill set name = #{name}," +
             "experience = #{experience} " +
             "where id = #{id} and user_id = #{userId}")

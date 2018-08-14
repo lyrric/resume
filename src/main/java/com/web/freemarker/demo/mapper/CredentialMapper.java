@@ -20,4 +20,5 @@ public interface CredentialMapper extends BaseMapper<Credential> {
 
     @Delete("deleteByIdAndUserId from credential where id = #{id} and user_id = #{userId}")
     int deleteByIdAndUserId(@Param("id")Integer id, @Param("userId")Integer userId);
+
 }

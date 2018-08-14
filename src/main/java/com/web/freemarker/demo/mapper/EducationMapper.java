@@ -14,6 +14,9 @@ public interface EducationMapper extends BaseMapper<Education> {
     @ResultMap("BaseResultMap")
     List<Education> listByUserId(@Param("userId") int userId);
 
+    @Select("select * from education where user_id = #{userId} and id = #{id}")
+    @ResultMap("BaseResultMap")
+    Education findByIdAndUserId(@Param("id")int id, @Param("userId") int userId);
 
     @Update("update education set college = #{college}," +
             "startDate = #{startDate}," +

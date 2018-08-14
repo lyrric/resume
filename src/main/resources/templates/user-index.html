@@ -22,7 +22,7 @@
 			<h2 id="titleName" class="sectionHead">基本信息</h2>
 		</div>
 		<div style="float: right;margin-top: 18px;">
-			<a href="javascript:;" data-width="800px" data-height="370px" data-url="/user/base-info"
+			<a href="javascript:;" data-width="800px" data-height="370px" data-url="/user"
 				data-title="修改基本信息" onclick="showPage(this)">编辑</a>
 		</div>
 	</div>
@@ -114,7 +114,7 @@
 			<h2 id="learn" class="sectionHead">教育经历</h2>
 		</div>
 		<div style="float: right;margin-top: 50px;">
-			<a href="javascript:;" data-url="/user/education/0" data-width="400px" data-height="460px"
+			<a href="javascript:;" data-url="/education/0" data-width="400px" data-height="460px"
 			data-title="新增教育经历" onclick="showPage(this)">新增</a>
 		</div>
 	</div>
@@ -145,7 +145,7 @@
 			<h2 id="clock" class="sectionHead">工作经验</h2>
 		</div>
 		<div style="float: right;margin-top: 50px;">
-			<a href="javascript:;" data-url="user-job.html" data-width="400px" data-height="450px" 
+			<a href="javascript:;" data-url="/job/0" data-width="600px" data-height="520px"
 			data-title="新增工作经验" onclick="showPage(this)">新增</a>
 		</div>
 	</div>
@@ -161,7 +161,7 @@
 				<p class="job-content" th:text="${job.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut justo nibh, mattis sit amet consequat a, varius vitae metus. Proin pharetra sodales pellentesque.</p>
 				<p class="job-button">
 					<button onclick="showPage(this)" class="edit-button" th:data-id="${job.id}" th:data-url="|/job/${job.id}|"
-					data-width="400px" data-height="450px" data-title="编辑工作经验">编辑</button>
+					data-width="600px" data-height="520px" data-title="编辑工作经验">编辑</button>
 					<button onclick="del(this)" th:data-id="${job.id}"   data-url="/job" class="del-button">删除</button>
 				</p>
 			</div>
@@ -175,7 +175,7 @@
 			<h2 id="chat" class="sectionHead">项目经验</h2>
 		</div>
 		<div style="float: right;margin-top: 50px;">
-			<a href="javascript:;" data-url="user-project.html" data-width="420px" data-height="380px" 
+			<a href="javascript:;" data-url="/project/0" data-width="600px" data-height="500px"
 			data-title="新增项目经验" onclick="showPage(this)">新增</a>
 		</div>
 	</div>
@@ -189,8 +189,8 @@
 			<div class="project-div" th:data-div-id="${state.index}">
 				<p class="project-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut justo nibh, mattis sit amet consequat a, varius vitae metus. Proin pharetra sodales pellentesque.</p>
 				<p class="project-button">
-					<button onclick="showPage(this)" th:data-id="${project.id}" class="edit-button" th:data-url="|/project/${project.id}|"
-					ddata-width="420px" data-height="380px"  data-title="编辑项目经验">编辑</button>
+					<button onclick="showPage(this)"  class="edit-button" th:data-url="|/project/${project.id}|"
+					data-width="600px" data-height="500px"  data-title="编辑项目经验">编辑</button>
 					<button th:data-id="${project.id}" data-url="/project" onclick="del(1)" class="del-button">删除</button>
 				</p>
 			</div>
@@ -205,7 +205,7 @@
 			<h2 id="ribbon" class="sectionHead">资格证书</h2>
 		</div>
 		<div style="float: right;margin-top: 50px;">
-			<a href="javascript:;" data-url="/credential/0" data-width="500px" data-height="230px"
+			<a href="javascript:;" data-url="/credential" data-width="500px" data-height="230px"
 			data-title="新增资格证书" onclick="showPage(this)">新增</a>
 		</div>
 	</div>
@@ -229,7 +229,7 @@
 			<h2 id="tools" class="sectionHead">技能</h2>
 		</div>
 		<div style="float: right;margin-top: 50px;">
-			<a href="javascript:;" data-url="user-skill.html" data-width="400px" data-height="210px" 
+			<a href="javascript:;" data-url="/skill/0" data-width="400px" data-height="210px"
 			data-title="新增技能" onclick="showPage(this)">新增</a>
 		</div>
 	</div>

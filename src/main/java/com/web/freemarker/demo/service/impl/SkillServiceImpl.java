@@ -39,5 +39,10 @@ public class SkillServiceImpl implements SkillService {
         skillMapper.deleteByIdAndUserId(id, userId);
     }
 
+    @Override
+    public Skill findByIdAndUserId(int id, int userId) {
+        return skillMapper.findByIdAndUserId(id, userId);
+    }
+
 
 }

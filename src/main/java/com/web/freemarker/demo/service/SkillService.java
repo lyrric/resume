@@ -11,4 +11,6 @@ public interface SkillService {
     void update(Skill skill);
 
     void delete(int id, int userId);
+
+    Skill findByIdAndUserId(int id, int userId);
 }

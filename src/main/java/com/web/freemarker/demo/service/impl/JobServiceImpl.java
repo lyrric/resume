@@ -37,4 +37,9 @@ public class JobServiceImpl implements JobService {
         jobMapper.deleteByIdAndUserId(id, userId);
     }
 
+    @Override
+    public Job findByIdAndUserId(int id, int userId) {
+        return jobMapper.findByIdAndUserId(id, userId);
+    }
+
 }

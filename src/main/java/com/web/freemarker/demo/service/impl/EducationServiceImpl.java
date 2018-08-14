@@ -37,6 +37,10 @@ public class EducationServiceImpl implements EducationService {
         educationMapper.deleteByIdAndUserId(id, userId);
     }
 
+    @Override
+    public Education findByIdAndUserId(int id, int userId) {
+        return educationMapper.findByIdAndUserId(id, userId);
+    }
 
 
 }

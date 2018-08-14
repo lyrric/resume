@@ -38,6 +38,10 @@ public class ProjectServiceImpl implements ProjectService {
         projectMapper.deleteByIdAndUserId(id, userId);
     }
 
+    @Override
+    public Project findByIdAndUserId(int id, int userId) {
+        return projectMapper.findByIdAndUserId(id, userId);
+    }
 
 
 }

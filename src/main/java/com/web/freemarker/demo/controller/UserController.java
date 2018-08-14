@@ -24,15 +24,6 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    /**
-     * 获取自身信息
-     * @return
-     */
-    @GetMapping
-    public JsonResult getInfo(){
-        return JsonResultUtil.ok(userService.findById(1));
-    }
-
     @PostMapping
     public JsonResult update(User user){
         user.setId(1);

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="initial-scale=1.0,width=device-width" />
-<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" th:href="|/bootstrap-3.3.7/css/bootstrap.min.css|" href="bootstrap-3.3.7/css/bootstrap.min.css" type="text/css" />
 </head>
 <style>
 	.form-group{
@@ -56,19 +56,19 @@
 					</div>
 					<div class="form-group">
 						<label for="nation">民 族：</label>
-						<input type="text" class="form-control" id="nation" placeholder="汉族" th:value="${user.realName}">
+						<input type="text" class="form-control" id="nation" placeholder="汉族" th:value="${user.nation}">
 					</div>
 					<div class="form-group">
 						<label for="tel">电 话：</label>
-						<input type="text" class="form-control" id="tel" placeholder="186+" th:value="${user.realName}">
+						<input type="text" class="form-control" id="tel" placeholder="186+" th:value="${user.tel}">
 					</div>
 					<div class="form-group">
 						<label for="email">邮 箱：</label>
-						<input type="text" class="form-control" id="email" placeholder="@163.com" th:value="${user.realName}">
+						<input type="text" class="form-control" id="email" placeholder="@163.com" th:value="${user.email}">
 					</div>
 					<div class="form-group">
 						<label for="address">住 址：</label>
-						<input type="text" class="form-control" id="address" placeholder="四川成都" th:value="${user.realName}">
+						<input type="text" class="form-control" id="address" placeholder="四川成都" th:value="${user.address}">
 					</div>
 				</div>
 			</div>
@@ -89,22 +89,22 @@
 					</div>
 					<div class="form-group">
 						<label for="jobIntention">求职意向：</label>
-						<input type="text" class="form-control" id="jobIntention" placeholder="Java工程师"  th:value="${user.realName}">
+						<input type="text" class="form-control" id="jobIntention" placeholder="Java工程师"  th:value="${user.jobIntention}">
 					</div>
 					<div class="form-group">
 						<label for="college">毕业院校：</label>
-						<input type="text" class="form-control" id="college" placeholder="四川科技大学" th:value="${user.realName}">
+						<input type="text" class="form-control" id="college" placeholder="四川科技大学" th:value="${user.college}">
 					</div>
 					<div class="form-group">
 						<label for="birthday">出身年月：</label>
-						<input type="text" class="form-control" id="birthday" placeholder="1994-03-21" th:value="${user.realName}">
+						<input type="text" class="form-control" id="birthday" placeholder="1994-03-21" th:value="${user.birthday}">
 					</div>
 				</div>
 			</div>
 			<div class="base-photo">
 				<div style="margin-left: 5px;">
-					<img class="profile-photo" id="photo" src="user/images/default-profile-photo.jpg"  th:src="${user.realName}"/>
-					<input type="hidden" id="photo_value" th:value="${user.realName}"/>
+					<img class="profile-photo" id="photo" src="../user/images/default-profile-photo.jpg"  th:src="${user.profilePhoto}"/>
+					<input type="hidden" id="photo_value" th:value="${user.profilePhoto}"/>
 					<button class="btn btn-default" id="upBtn">选择照片</button>
 				</div>
 			</div>
@@ -119,11 +119,11 @@
 	</div>
 	<div class="clear"></div>
 </body>
-<script src="js/jquery-3.3.1.min.js" type="application/javascript"></script>
-<script src="bootstrap-3.3.7/js/bootstrap.min.js" type="application/javascript"></script>
-<script src="js/upImage.js" type="application/javascript"></script>
-<script src="layer/layer.js"></script>
-<script src="js/common.js"></script>
+<script th:src="|/js/jquery-3.3.1.min.js|" src="js/jquery-3.3.1.min.js" type="application/javascript"></script>
+<script th:src="|/bootstrap-3.3.7/js/bootstrap.min.js|" src="bootstrap-3.3.7/js/bootstrap.min.js" type="application/javascript"></script>
+<script th:src="|/js/upImage.js|" src="js/upImage.js" type="application/javascript"></script>
+<script th:src="|/layer/layer.js|" src="layer/layer.js"></script>
+<script th:src="|/js/common.js|" src="js/common.js"></script>
 <script type="application/javascript">
 	$('#upBtn').click(function(){
 		event.stopPropagation();

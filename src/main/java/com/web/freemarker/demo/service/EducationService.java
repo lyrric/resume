@@ -11,4 +11,6 @@ public interface EducationService {
     void update(Education education);
 
     void delete(int id, int userId);
+
+    Education findByIdAndUserId(int id, int userId);
 }
