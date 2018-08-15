@@ -4,15 +4,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>个人中心-我的简历</title>
 <meta name="viewport" content="initial-scale=1.0,width=device-width" />
-<link rel="stylesheet" href="../user/css/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="../user/css/prettyPhoto.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="../user/css/print.css" type="text/css" media="print" />
+<link rel="stylesheet" th:href="|/user/css/style.css|" href="user/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" th:href="|user/css/prettyPhoto.css|" href="user/css/prettyPhoto.css" type="text/css" media="screen" />
+<link rel="stylesheet" th:href="|user/css/print.css|" href="user/css/print.css" type="text/css" media="print" />
 </head>
 <body>
 
 <!--STICKER-->
 <div id="sticker">
-	<h2 class="sectionHead" >我的简历</h2>
+	<div style="float: left;margin: 10px 0 0 30px;" >
+		<div style="float: left;">
+			<img src="/user/images/home.png" style="width: 30px;height: 30px;"/>
+		</div>
+		<div style="float: left;margin-top: 10px" >
+			<a href="#" target="_blank"><h2 class="sectionHead1" >我的简历</h2></a>
+		</div>
+	</div>
+	<div style="float: left;margin: 10px 0 0 30px;" >
+		<div style="float: left;">
+			<img src="/user/images/resume.png" style="width: 30px;height: 30px;"/>
+		</div>
+		<div style="float: left;margin-top: 10px" >
+			<a href="#" target="_blank"><h2 class="sectionHead1">选择模版</h2><</a>
+		</div>
+
+	</div>
+	<div class="clear"></div>
 </div>
 
 <div id="wrapper">
@@ -259,11 +276,11 @@
 
 <div id="copyright">&copy; 2012 - Designed and developed by THE MOLITOR. More Templates 
 </div>
-<script src="../user/js/jquery.js"></script>
-<script src="../user/js/prettyPhoto.js"></script>
-<script src="../user/js/backPosition.js"></script>
-<script src="../user/js/custom.js"></script>
-<script src="../layer/layer.js"></script>
-<script src="../user/js/data.js"></script>
+<script th:src="|/user/js/jquery.js|" src="user/js/jquery.js"></script>
+<script th:src="|/user/js/prettyPhoto.js|" src="user/js/prettyPhoto.js"></script>
+<script th:src="|/user/js/backPosition.js|" src="user/js/backPosition.js"></script>
+<script th:src="|/user/js/custom.js|" src="user/js/custom.js"></script>
+<script th:src="|/layer/layer.js|" src="layer/layer.js"></script>
+<script th:src="|/user/js/data.js|" src="user/js/data.js"></script>
 </body>
 </html>
