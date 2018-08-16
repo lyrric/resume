@@ -5,9 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Controller
 public class PageController {
@@ -24,6 +24,8 @@ public class PageController {
     private ProjectService projectService;
     @Resource
     private SkillService skillService;
+    @Resource
+    private ResumeTplService resumeTplService;
 
     /**
      * 用户首页
@@ -126,5 +128,17 @@ public class PageController {
             model.addAttribute("skill", skillService.findByIdAndUserId(id, 1));
         }
         return "user-skill";
+    }
+
+    /**
+     * 简历模版列表
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @GetMapping(value = "/resume-tpl/list")
+    public String resumeTplList(@RequestParam(defaultValue = "1") Integer pageNo, @RequestParam(defaultValue = "100") Integer pageSize, Model model){
+        model.addAttribute("resumeTpls", resumeTplService.page(pageNo, pageSize).getList());
+        return "resume-tpl-list";
     }
 }
