@@ -3,7 +3,7 @@ package com.web.freemarker.demo.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.web.freemarker.demo.entity.ResumeTpl;
-import com.web.freemarker.demo.mapper.ResumeFeign;
+import com.web.freemarker.demo.feign.ResumeFeign;
 import com.web.freemarker.demo.mapper.ResumeTplMapper;
 import com.web.freemarker.demo.service.ResumeTplService;
 import com.web.freemarker.demo.util.JsonResult;
