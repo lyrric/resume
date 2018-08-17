@@ -14,7 +14,8 @@ public class JsonResult {
     private String errMsg;
 
     private Object data;
-
+    public JsonResult() {
+    }
     public JsonResult(boolean success) {
         this.success = success;
     }
